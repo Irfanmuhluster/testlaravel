@@ -62,6 +62,13 @@
                         <h5>Nama Produk: {{ $item->product_name }}</h5>
                         <h5>Kategori   : {{ $item->category->category_name }}</h5>
                         <h5>Harga   : {{ $item->harga_l }}</h5>
+                        <h5>Ukuran Tersedia   :
+                            @foreach (json_decode($item->size) as $value)
+                               {{ $value }},
+                            @endforeach</h5>
+                        <h5>Warna   : @foreach (json_decode($item->color) as $value)
+                           {{ $value}} ,
+                        @endforeach</h5>
                         <p class="card-text">{{ $item->product_name }}</p>
                         <div class="block-inline">
                             <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-primary">
